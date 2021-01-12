@@ -1,25 +1,12 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-
-function ExerciseListScreen({ navigation }) {
-  return(
-    <View style={styles.container}>
-        <Text>Exercise List Working!</Text>
-      </View>
-  )
-}
-function CreateExerciseScreen({ navigation }) {
-  return(
-    <View style={styles.container}>
-        <Text>Create Exercise Working!</Text>
-      </View>
-  )
-}
+import ExerciseListScreen from './Screens/ExerciseListScreen';
+import CreateExerciseScreen from './Screens/CreateExerciseSreen';
+import AddUserScreen from './Screens/AddUserScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,33 +16,38 @@ export default function App() {
       <Tab.Navigator initialRouteName="All" screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
+            size = 40;
 
             if (route.name === 'All') {
               iconName = 'list-outline';
             } else if (route.name === 'Record') {
               iconName = 'add-outline';
+            } else if (route.name === 'Add User') {
+              iconName = 'person-add-outline';
             }
 
             // You can return any component that you like here!
-            return <Ionicons name={iconName} size={30} color={color} />;
+            return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
-          activeTintColor: 'aqua',
-          inactiveTintColor: 'gray',
+          activeTintColor: '#008cff',
+          inactiveTintColor: 'black',
+          showLabel: false,
         }}>
         <Tab.Screen name="All" component={ExerciseListScreen} />
         <Tab.Screen name="Record" component={CreateExerciseScreen} />
+        <Tab.Screen name="Add User" component={AddUserScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
