@@ -6,20 +6,27 @@ import {Picker} from '@react-native-picker/picker';
 function CreateExerciseScreen({ navigation }) {
 
     // const {users, setUsers} = useState([]);
+    const [data, setData] = useState([]);
     const [selectedValue, setSelectedValue] = useState('');
-    
-    let DATA
-    let USERS
 
-    useEffect(() => {
-      axios.get('http://localhost:5000/users').then(res => {
-        DATA = res.data
-        console.log(DATA)
-        USERS = DATA.map(user => {
-          return (<Picker.Item label={user.username} value={user.username} />)
+    axios.get('http://localhost:5000/users').then((res) => {
+    setData(res.data)}).catch((err) => console.log(err));;
+  let USERS = data.map(user => {
+          return (<Picker.Item label={user.username} value={user.username} key={user._id} />)
         })
-    }).catch(err => console.log(err));
-      }, []);
+    
+    // let DATA
+    // let USERS
+
+    // useEffect(() => {
+    //   axios.get('http://localhost:5000/users').then(res => {
+    //     DATA = res.data
+    //     console.log(DATA)
+    //     USERS = DATA.map(user => {
+    //       return (<Picker.Item label={user.username} value={user.username} />)
+    //     })
+    // }).catch(err => console.log(err));
+    //   }, []);
 
     return(
       <View style={{
