@@ -21,7 +21,7 @@ export default function App() {
             if (route.name === 'All') {
               iconName = 'list-outline';
             } else if (route.name === 'Record') {
-              iconName = 'add-outline';
+              iconName = 'add-circle-outline';
             } else if (route.name === 'Add User') {
               iconName = 'person-add-outline';
             }
