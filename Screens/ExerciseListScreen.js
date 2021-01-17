@@ -15,7 +15,7 @@ function ExerciseListScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1}}>
-        <Text style={{fontWeight: 'bold', fontSize: 30, backgroundColor: "#008cff", padding: 15}}>All Exercises</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 30, color: 'white', backgroundColor: "#008cff", padding: 15}}>All Exercises</Text>
         <FlatList
             data={exercises}
             keyExtractor={item => item._id}
@@ -23,8 +23,9 @@ function ExerciseListScreen({ navigation }) {
                 <Pressable onPress={() => {
                     console.log('Working');
                   }}>
-                    <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', marginRight:40}}>
+                    <View style={{flex:1, flexDirection:'row', justifyContent:'space-between',}}>
                         <Text style={{padding: 15, fontSize: 20}}>{item.username}</Text>
+                        <Text style={{padding: 15, fontSize: 20}}>{item.duration}</Text>
                         <Text style={{padding: 15, fontSize: 20}}>{item.description}</Text>
                 </View>
                 </Pressable>
