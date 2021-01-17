@@ -7,9 +7,9 @@ import DatePicker from 'react-native-datepicker';
 function CreateExerciseScreen({ navigation }) {
 
     const [data, setData] = useState([]);
-    const [username, setUsername] = useState('Select User');
-    const [description, setDescription] = useState('Describe your activity');
-    const [duration, setDuration] = useState(0);
+    const [username, setUsername] = useState('');
+    const [description, setDescription] = useState('');
+    const [duration, setDuration] = useState();
     const [date, setDate] = useState(new Date().toDateString());
 
    
@@ -18,13 +18,6 @@ function CreateExerciseScreen({ navigation }) {
     let USERS = data.map(user => {
             return (<Picker.Item label={user.username} value={user.username} key={user._id} />)
           })
-
-    useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      console.log('refreshed');
-    });
-      return unsubscribe
-    }, [navigation]);
     
     function createExercise() {
 
@@ -41,7 +34,9 @@ function CreateExerciseScreen({ navigation }) {
             .then(res => 
             console.log(res)
         ).catch(err => console.log(err));
-
+        setUsername('');
+        setDescription('');
+        setDuration();
         navigation.navigate('All');
     }
 
@@ -53,6 +48,7 @@ function CreateExerciseScreen({ navigation }) {
         <Text style={{fontWeight: 'bold', fontSize: 30, color: 'white', backgroundColor: "#008cff", padding: 15}}>Record Exercise</Text>
         <Text style={{padding: 15, fontSize: 20}} >Username:</Text>
         <Picker
+          selectedValue={username}
           style={{ height: 50, margin: 15}}
           onValueChange={(itemValue) => {setUsername(itemValue)}}
         >
@@ -89,7 +85,7 @@ function CreateExerciseScreen({ navigation }) {
         onDateChange={(date) => {setDate(date)}}
       />
       <View style={{margin:15}}>
-        <Button title='Create' onPress={createExercise}/>
+        <Button title='Record Exercise' onPress={createExercise}/>
       </View>
       </View>
     )

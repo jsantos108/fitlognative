@@ -25,7 +25,7 @@ function ExerciseListScreen({ navigation }) {
             keyExtractor={item => item._id}
             renderItem={({ item }) => (
                 <Pressable onPress={() => {
-                    console.log('Working');
+                    console.log(item.username);
                   }}>
                     <View style={{flex:1, flexDirection:'row', justifyContent:'space-between',}}>
                         <Text style={{padding: 15, fontSize: 20}}>{item.username}</Text>
