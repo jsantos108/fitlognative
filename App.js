@@ -7,6 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import ExerciseListScreen from './Screens/ExerciseListScreen';
 import CreateExerciseScreen from './Screens/CreateExerciseSreen';
 import AddUserScreen from './Screens/AddUserScreen';
+import EditExerciseScreen from './Screens/EditExerciseScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,6 +39,7 @@ export default function App() {
         <Tab.Screen name="All" component={ExerciseListScreen} />
         <Tab.Screen name="Record" component={CreateExerciseScreen} />
         <Tab.Screen name="Add User" component={AddUserScreen} />
+        <Tab.Screen name="Edit Exercise" component={EditExerciseScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -26,6 +26,13 @@ function ExerciseListScreen({ navigation }) {
             renderItem={({ item }) => (
                 <Pressable onPress={() => {
                     console.log(item.username);
+                    navigation.navigate('Edit Exercise', {
+                      id: item._id,
+                      username: item.username,
+                      description: item.description,
+                      duration: item.duration,
+                      date: item.date
+                    });
                   }}>
                     <View style={{flex:1, flexDirection:'row', justifyContent:'space-between',}}>
                         <Text style={{padding: 15, fontSize: 20}}>{item.username}</Text>
