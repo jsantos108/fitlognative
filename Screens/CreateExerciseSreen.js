@@ -3,6 +3,7 @@ import axios from 'axios';
 import {View, Text, TextInput, Button} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import DatePicker from 'react-native-datepicker';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function CreateExerciseScreen({ navigation }) {
 
@@ -42,10 +43,14 @@ function CreateExerciseScreen({ navigation }) {
 
 
     return(
-      <View style={{
-        flex: 1
-      }}>
+      <View>
         <Text style={{fontWeight: 'bold', fontSize: 30, color: 'white', backgroundColor: "#008cff", padding: 15}}>Record Exercise</Text>
+        
+        <View style={{flex:1, flexDirection:'row', justifyContent:'space-around', margin: 30}}>
+            <Ionicons name='home-outline' size={40} color='#008cff' onPress={() => navigation.navigate('All')} />
+            <Ionicons name='person-add-outline' size={40} color='#008cff' onPress={() => navigation.navigate('AddUser')} />
+        </View>
+        
         <Text style={{padding: 15, fontSize: 20}} >Username:</Text>
         <Picker
           selectedValue={username}

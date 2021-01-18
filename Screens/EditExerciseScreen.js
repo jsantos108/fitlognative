@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {View, Text, TextInput, Button} from 'react-native';
+import {View, Text, TextInput, Button, ScrollView} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import DatePicker from 'react-native-datepicker';
-import { ScrollView } from 'react-native-gesture-handler';
+// import { ScrollView } from 'react-native-gesture-handler';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 function CreateExerciseScreen({ route, navigation }) {
 
@@ -58,10 +59,15 @@ function CreateExerciseScreen({ route, navigation }) {
 
 
     return(
-      <ScrollView style={{
-        flex: 1
-      }}>
-        <Text style={{fontWeight: 'bold', fontSize: 30, color: 'white', backgroundColor: "#008cff", padding: 15}}>Record Exercise</Text>
+      <ScrollView>
+        <Text style={{fontWeight: 'bold', fontSize: 30, color: 'white', backgroundColor: "#008cff", padding: 15}}>Edit Exercise</Text>
+        
+        <View style={{flex:1, flexDirection:'row', justifyContent:'space-around', margin:30 }}>
+            <Ionicons name='home-outline' size={40} color='#008cff' onPress={() => navigation.navigate('All')} />
+            <Ionicons name='add-circle-outline' size={40} color='#008cff' onPress={() => navigation.navigate('Record')} />
+            <Ionicons name='person-add-outline' size={40} color='#008cff' onPress={() => navigation.navigate('AddUser')} />
+        </View>
+        
         <Text style={{padding: 15, fontSize: 20}} >Username:</Text>
         <Picker
           selectedValue={username}
